@@ -15,8 +15,6 @@ import { register, resetStatus } from '../store/usersSliceAsync';
 
 function RegisterPage() {
 
-  const [registered, setRegistered] = React.useState<boolean>(false);
-
   const [userName, setUserName] = React.useState<string>("");
   const [email, setEmail] = React.useState<string>("");
   const [password, setPassword] = React.useState<string>("");
@@ -61,8 +59,7 @@ function RegisterPage() {
         const user = new User(email, password);
         user.doMailing = doMailing;
         user.userName = userName;
-        dispatch(register(user)); 
-        setRegistered(true); 
+        dispatch(register(user));
       }}>Зарегистрироваться</Button>
 
       <MessageBox message={`Пользователь "${email}" успешно зарегистрирован.`} 

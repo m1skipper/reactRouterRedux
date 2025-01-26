@@ -11,11 +11,9 @@ import Snackbar, { SnackbarProps } from '@mui/joy/Snackbar';
 import { useSelector, useDispatch } from 'react-redux'; // Импортируем хуки useSelector и useDispatch из библиотеки react-redux. Хук - это функция, которая позволяет вам использовать состояние и другие возможности React без написания классов
 import { AppDispatch, RootState } from '../store/store'; // Импортируем тип RootState из хранилища
 import { loginAsync, resetStatus } from '../store/usersSliceAsync'; // Импортируем действия increment, decrement и incrementByAmount из слайса
-import { useNavigate } from "react-router";
 
 function LoginPage() {
 
-  // Диалог который вызывается, если ошибка логина
   const [login, setLogin] = React.useState<string>("");
   const [password, setPassword] = React.useState<string>("");
 
@@ -25,15 +23,11 @@ function LoginPage() {
   const error = useSelector((state: RootState) => state.usersContext.error);
 
   const currentUser = useSelector((state: RootState) => state.usersContext.currentUser);
-  
-
-  let navigate = useNavigate();
 
   if(currentUser != null)
   {
     dispatch(resetStatus());
-   //navigate('/');/
-     return (<Navigate to="/"/>);
+    return (<Navigate to="/"/>);
   }
 
   return (
